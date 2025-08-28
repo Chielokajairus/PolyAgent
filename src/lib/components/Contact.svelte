@@ -1,21 +1,7 @@
 <script lang="ts">
-	const contactMethods = [
-		{
-			type: 'Email',
-			value: 'hello@poly-agent.com',
-			description: 'Direkter Draht für konkrete Projekte'
-		},
-		{
-			type: 'Telefon', 
-			value: '+49 (0) 30 12345678',
-			description: 'Montag bis Freitag, 9:00 - 18:00'
-		},
-		{
-			type: 'LinkedIn',
-			value: '/company/poly-agent',
-			description: 'Berufliche Anfragen & Updates'
-		}
-	];
+	import { currentLanguage, translations } from '$utils/i18n';
+	
+		$: contactMethods = $currentLanguage === 'de' ? translations.de.contact.methods : translations.en.contact.methods;
 </script>
 
 <section id="contact" class="relative py-32">
@@ -24,17 +10,15 @@
 			<!-- Content Column -->
 			<div class="space-y-12">
 				<div class="space-y-6">
-					<p class="text-xs font-mono text-gray-500 tracking-widest uppercase">Kontakt</p>
+					<p class="text-xs font-mono text-gray-500 tracking-widest uppercase">{$currentLanguage === 'de' ? translations.de.contact.title : translations.en.contact.title}</p>
 					<h2 class="text-5xl font-extralight text-gray-900 tracking-tight max-w-lg">
-						Lassen Sie uns sprechen
+						{$currentLanguage === 'de' ? translations.de.contact.subtitle : translations.en.contact.subtitle}
 					</h2>
 				</div>
 
 				<div class="space-y-8">
 					<p class="text-gray-600 leading-relaxed font-light max-w-md">
-						Automatisierung beginnt mit dem richtigen Gespräch. 
-						Wir analysieren Ihre Workflows und entwickeln maßgeschneiderte Lösungen, 
-						die Datenschutz und Effizienz vereinen.
+						{$currentLanguage === 'de' ? translations.de.contact.description : translations.en.contact.description}
 					</p>
 
 					<div class="space-y-6">
@@ -67,9 +51,8 @@
 				<!-- Privacy Note -->
 				<div class="pt-8 border-t border-gray-100">
 					<p class="text-gray-500 text-xs leading-relaxed font-light">
-						<strong class="text-gray-700">Datenschutz-Hinweis:</strong> 
-						Ihre Anfrage wird verschlüsselt übertragen und DSGVO-konform verarbeitet. 
-						Keine Weiterleitung an Dritte, keine Marketing-Automation.
+						<strong class="text-gray-700">{$currentLanguage === 'de' ? translations.de.contact.privacy.title : translations.en.contact.privacy.title}</strong> 
+						{$currentLanguage === 'de' ? translations.de.contact.privacy.text : translations.en.contact.privacy.text}
 					</p>
 				</div>
 			</div>

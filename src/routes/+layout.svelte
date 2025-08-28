@@ -2,6 +2,8 @@
   import '../app.css';
   import { onMount } from 'svelte';
   import { microInteractions } from '$utils/animations';
+  import LanguageToggle from '$components/LanguageToggle.svelte';
+  import { currentLanguage, translations } from '$utils/i18n';
   
   onMount(() => {
     // Add navigation hover effects
@@ -45,10 +47,11 @@
         </a>
         
         <!-- Navigation -->
-        <nav class="hidden md:flex items-center gap-12 text-sm font-light">
-          <a href="#cases" id="nav-cases" class="text-gray-600 hover:text-gray-900 transition-colors">Cases</a>
-          <a href="#stack" id="nav-stack" class="text-gray-600 hover:text-gray-900 transition-colors">Stack</a>
-          <a href="#contact" id="nav-contact" class="text-gray-600 hover:text-gray-900 transition-colors">Kontakt</a>
+        <nav class="hidden md:flex items-center gap-8 text-sm font-light">
+          <a href="#cases" id="nav-cases" class="text-gray-600 hover:text-gray-900 transition-colors">{$currentLanguage === 'de' ? translations.de.nav.cases : translations.en.nav.cases}</a>
+          <a href="#stack" id="nav-stack" class="text-gray-600 hover:text-gray-900 transition-colors">{$currentLanguage === 'de' ? translations.de.nav.stack : translations.en.nav.stack}</a>
+          <a href="#contact" id="nav-contact" class="text-gray-600 hover:text-gray-900 transition-colors">{$currentLanguage === 'de' ? translations.de.nav.contact : translations.en.nav.contact}</a>
+          <LanguageToggle />
         </nav>
       </div>
     </div>
@@ -62,7 +65,7 @@
   <!-- Footer -->
   <footer class="relative z-10 border-t border-gray-100 mt-32">
     <div class="mx-auto max-w-6xl px-8 py-12 text-xs text-gray-400 font-light">
-      © {new Date().getFullYear()} Poly-Agent — Automation & Workflow Optimization
+      {$currentLanguage === 'de' ? translations.de.footer : translations.en.footer}
     </div>
   </footer>
 </div>

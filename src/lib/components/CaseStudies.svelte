@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { scrollAnimations } from '$utils/animations';
+	import { currentLanguage, translations } from '$utils/i18n';
 	
 	onMount(() => {
 		// Initialize scroll animations for case study cards
@@ -15,32 +16,7 @@
 		}, 500);
 	});
 	
-			const cases = [
-			{
-				id: '01',
-				title: 'Manufacturing Workflow',
-				subtitle: 'Produktionsautomatisierung',
-				description: 'Vollständige Digitalisierung der Fertigungsprozesse mit DSGVO-konformer Datenverarbeitung und 40% Effizienzsteigerung.',
-				metrics: ['<span class="metric-40">40</span>% Effizienzsteigerung', 'DSGVO-konforme Umsetzung', '24/7 Monitoring'],
-				tags: ['Manufacturing', 'IoT', 'Compliance']
-			},
-			{
-				id: '02',
-				title: 'Financial Data Pipeline',
-				subtitle: 'Finanzprozess-Optimierung',
-				description: 'Automatisierte Datenverarbeitung mit End-to-End-Verschlüsselung und regulatorischer Compliance für Finanzdienstleister.',
-				metrics: ['<span class="metric-99">99.9</span>% Verfügbarkeit', 'End-to-End Verschlüsselung', 'BaFin-konform'],
-				tags: ['Finance', 'Security', 'Compliance']
-			},
-			{
-				id: '03',
-				title: 'Healthcare Integration',
-				subtitle: 'Medizin-Workflow',
-				description: 'Sichere Patientendaten-Workflows mit höchsten Datenschutzstandards und nahtloser Systemintegration.',
-				metrics: ['<span class="metric-100">100</span>% Datenschutz', 'HL7-kompatibel', '<span class="metric-50">50</span>% Zeitersparnis'],
-				tags: ['Healthcare', 'Integration', 'Privacy']
-			}
-		];
+	$: cases = $currentLanguage === 'de' ? translations.de.cases.items : translations.en.cases.items;
 </script>
 
 <section id="cases" class="relative py-32">
@@ -48,9 +24,9 @@
 		<!-- Section Header -->
 		<div class="mb-24">
 			<div class="space-y-6">
-				<p class="text-xs font-mono text-gray-500 tracking-widest uppercase">Case Studies</p>
+				<p class="text-xs font-mono text-gray-500 tracking-widest uppercase">{$currentLanguage === 'de' ? translations.de.cases.title : translations.en.cases.title}</p>
 				<h2 class="text-5xl font-extralight text-gray-900 tracking-tight max-w-2xl">
-					Vertrauen durch Transparenz
+					{$currentLanguage === 'de' ? translations.de.cases.subtitle : translations.en.cases.subtitle}
 				</h2>
 			</div>
 		</div>

@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import GeodesicSphere3D from './GeodesicSphere3D.svelte';
 	import { heroAnimations } from '$utils/animations';
+	import { currentLanguage, translations } from '$utils/i18n';
 	
 	let mounted = false;
 	
@@ -22,14 +23,13 @@
 		<div class="space-y-12">
 			<div class="space-y-8">
 				<h1 class="text-6xl lg:text-8xl font-extralight tracking-tight leading-[0.9]">
-					<span class="block text-gray-900 hero-title">Automation</span>
-					<span class="block text-gray-500 text-5xl lg:text-6xl hero-subtitle">mit</span>
-					<span class="block text-gray-900 hero-title">Datenschutz-DNA</span>
+					<span class="block text-gray-900 hero-title">{$currentLanguage === 'de' ? translations.de.hero.title.line1 : translations.en.hero.title.line1}</span>
+					<span class="block text-gray-500 text-5xl lg:text-6xl hero-subtitle">{$currentLanguage === 'de' ? translations.de.hero.title.line2 : translations.en.hero.title.line2}</span>
+					<span class="block text-gray-900 hero-title">{$currentLanguage === 'de' ? translations.de.hero.title.line3 : translations.en.hero.title.line3}</span>
 				</h1>
 				
 				<p class="text-lg text-gray-600 max-w-md leading-relaxed font-light hero-description">
-					Intelligente Workflow-Optimierung für Unternehmen, 
-					die Effizienz und Compliance gleichzeitig ernst nehmen.
+					{$currentLanguage === 'de' ? translations.de.hero.description : translations.en.hero.description}
 				</p>
 			</div>
 
@@ -38,7 +38,7 @@
 					href="#cases" 
 					class="group flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors duration-300 hero-cta"
 				>
-					<span>Mehr erfahren</span>
+					<span>{$currentLanguage === 'de' ? translations.de.hero.cta.learnMore : translations.en.hero.cta.learnMore}</span>
 					<div class="w-4 h-px bg-gray-400 group-hover:w-6 transition-all duration-200"></div>
 				</a>
 				
@@ -46,7 +46,7 @@
 					href="#contact" 
 					class="text-gray-500 hover:text-gray-700 transition-colors duration-300 hero-cta"
 				>
-					Kontakt
+					{$currentLanguage === 'de' ? translations.de.hero.cta.contact : translations.en.hero.cta.contact}
 				</a>
 			</div>
 		</div>
