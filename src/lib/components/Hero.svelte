@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import GeodesicSphere3D from './GeodesicSphere3D.svelte';
 	
 	let mounted = false;
-	let sphereContainer: HTMLDivElement;
 	
 	onMount(() => {
 		mounted = true;
@@ -45,60 +45,11 @@
 		</div>
 
 		<!-- Geodesic Sphere Column -->
-		<div class="relative flex items-center justify-center" bind:this={sphereContainer}>
-			<div class="relative w-80 h-80">
-				<!-- Floating sphere container -->
-				<div class="absolute inset-0 {mounted ? 'animate-float' : ''} will-change-transform">
-					<!-- Geodesic Sphere SVG -->
-					<svg 
-						viewBox="0 0 400 400" 
-						class="w-full h-full"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<!-- Geodesic sphere paths -->
-						<g transform="translate(200,200)" stroke="#1f2937" stroke-width="0.8" fill="none" opacity="0.7">
-							<!-- Main icosahedron structure -->
-							{#each Array(20) as _, i}
-								<g class="animate-pulse-slow" style="animation-delay: {i * 150}ms">
-									<!-- Triangular faces -->
-									<path d="M {60 * Math.cos(i * Math.PI / 10)} {60 * Math.sin(i * Math.PI / 10)} 
-									         L {80 * Math.cos((i + 2) * Math.PI / 10)} {80 * Math.sin((i + 2) * Math.PI / 10)}
-									         L {50 * Math.cos((i + 4) * Math.PI / 10)} {50 * Math.sin((i + 4) * Math.PI / 10)} Z" />
-								</g>
-							{/each}
-							
-							<!-- Inner pentagon connections -->
-							{#each Array(5) as _, i}
-								<line 
-									x1={35 * Math.cos(i * 2 * Math.PI / 5)} 
-									y1={35 * Math.sin(i * 2 * Math.PI / 5)}
-									x2={35 * Math.cos((i + 1) * 2 * Math.PI / 5)} 
-									y2={35 * Math.sin((i + 1) * 2 * Math.PI / 5)}
-									stroke="#374151"
-									stroke-width="0.6"
-									opacity="0.5"
-								/>
-							{/each}
-
-							<!-- Connection nodes -->
-							{#each Array(12) as _, i}
-								<circle 
-									cx={65 * Math.cos(i * Math.PI / 6)} 
-									cy={65 * Math.sin(i * Math.PI / 6)} 
-									r="1" 
-									fill="#6b7280"
-									opacity="0.8"
-									class="animate-pulse"
-									style="animation-delay: {i * 100}ms"
-								/>
-							{/each}
-
-							<!-- Central connection point -->
-							<circle cx="0" cy="0" r="1.5" fill="#1f2937" opacity="0.9"/>
-						</g>
-					</svg>
-				</div>
-
+		<div class="relative flex items-center justify-center">
+			<div class="relative w-[28rem] h-[28rem] {mounted ? 'animate-float' : ''} will-change-transform">
+				<!-- 3D Geodesic Sphere -->
+				<GeodesicSphere3D />
+				
 				<!-- Subtle shadow -->
 				<div class="absolute top-4 left-4 w-full h-full opacity-10">
 					<div class="w-full h-full bg-gray-900 rounded-full blur-2xl"></div>

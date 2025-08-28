@@ -1,0 +1,1411 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+DOCUMENTATION/
+  ACTION_PLANS/
+    PLAN_3D_Geodesic_Sphere.md
+    PLAN_SvelteKit_Setup.md
+src/
+  lib/
+    components/
+      CaseStudies.svelte
+      Contact.svelte
+      GeodesicSphere3D.svelte
+      Hero.svelte
+      TechStack.svelte
+    types/
+      index.ts
+    utils/
+      index.ts
+  routes/
+    +layout.svelte
+    +page.svelte
+  app.css
+  app.html
+.eslintrc.cjs
+.gitignore
+.prettierrc
+package.json
+postcss.config.js
+svelte.config.js
+tailwind.config.js
+tsconfig.json
+vite.config.js
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="DOCUMENTATION/ACTION_PLANS/PLAN_3D_Geodesic_Sphere.md">
+# 3D Geodesic Sphere Implementation - Execution Plan
+
+## PROJECT OVERVIEW
+Transform the current 2D SVG geodesic sphere into a true 3D interactive element using Three.js, creating a professional embossed/debossed appearance that matches the logo reference.
+
+## MILESTONE 1: Dependencies & Setup
+**Objective:** Install and configure Three.js and related dependencies
+
+### Tasks:
+- [x] Install Three.js and TypeScript types
+- [x] Install @types/three for TypeScript support
+- [x] Configure Vite for Three.js optimization
+- [x] Set up basic Three.js scene structure
+- [x] Test basic 3D rendering
+
+**Dependencies Required:**
+```json
+{
+  "three": "^0.160.0",
+  "@types/three": "^0.160.0"
+}
+```
+
+**Test Criteria:** Basic 3D scene renders without errors
+
+## MILESTONE 2: Geodesic Geometry Creation
+**Objective:** Build proper icosahedron-based geodesic sphere geometry
+
+### Tasks:
+- [x] Create icosahedron base geometry
+- [x] Implement geodesic subdivision algorithm
+- [x] Generate proper vertex and face data
+- [x] Create wireframe material with custom shaders
+- [x] Add node/vertex highlighting
+
+**Technical Requirements:**
+- Icosahedron base (20 triangular faces)
+- Geodesic subdivision (frequency 2-3)
+- Proper UV mapping for materials
+- Vertex normals for lighting
+
+**Test Criteria:** 3D sphere displays with correct geometry
+
+## MILESTONE 3: Material & Lighting System
+**Objective:** Create embossed/debossed appearance with professional lighting
+
+### Tasks:
+- [x] Design custom shader materials
+- [x] Implement embossed/dedebossed effect
+- [x] Add ambient and directional lighting
+- [x] Create subtle shadow system
+- [x] Implement depth-based opacity
+
+**Visual Effects:**
+- Embossed wireframe lines
+- Debossed surface texture
+- Subtle ambient occlusion
+- Professional lighting setup
+
+**Test Criteria:** Sphere has realistic embossed appearance
+
+## MILESTONE 4: Animation & Interaction
+**Objective:** Add smooth 3D animations and user interactions
+
+### Tasks:
+- [x] Implement smooth rotation animation
+- [x] Add hover interaction effects
+- [x] Create node pulse animations
+- [x] Add mouse/touch interaction
+- [x] Optimize performance for 60fps
+
+**Animation Features:**
+- Continuous gentle rotation
+- Hover-triggered node highlights
+- Smooth camera transitions
+- Responsive interaction
+
+**Test Criteria:** Animations run smoothly at 60fps
+
+## MILESTONE 5: Integration & Polish
+**Objective:** Integrate 3D sphere into existing Hero component
+
+### Tasks:
+- [x] Replace SVG with Three.js canvas
+- [x] Match existing layout and sizing
+- [x] Add responsive canvas scaling
+- [x] Optimize for mobile performance
+- [x] Add loading states and fallbacks
+
+**Integration Requirements:**
+- Responsive design compatibility
+- Performance optimization
+- Accessibility considerations
+- Fallback for older browsers
+
+**Test Criteria:** 3D sphere integrates seamlessly with existing design
+
+## TECHNICAL SPECIFICATIONS
+
+### Geodesic Sphere Parameters:
+- **Base Shape:** Icosahedron (20 faces)
+- **Subdivision Frequency:** 2-3 (for optimal detail)
+- **Wireframe Thickness:** 0.5-1px equivalent
+- **Node Size:** 2-3px equivalent
+- **Animation Speed:** 0.5-1 RPM rotation
+
+### Performance Targets:
+- **Frame Rate:** 60fps minimum
+- **Initial Load:** <2 seconds
+- **Memory Usage:** <50MB
+- **Mobile Performance:** 30fps minimum
+
+### Browser Support:
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+
+## DEPENDENCIES BREAKDOWN
+
+### Core Dependencies:
+```bash
+npm install three @types/three
+```
+
+### Optional Enhancements:
+```bash
+npm install gsap  # For advanced animations
+```
+
+### Development Dependencies:
+```bash
+npm install --save-dev @types/three
+```
+
+## RISK MITIGATION
+
+### Performance Risks:
+- **Issue:** Complex geometry causing low frame rates
+- **Solution:** Implement LOD (Level of Detail) system
+- **Fallback:** Reduce subdivision frequency
+
+### Browser Compatibility:
+- **Issue:** WebGL not supported
+- **Solution:** SVG fallback for older browsers
+- **Detection:** WebGL capability detection
+
+### Mobile Performance:
+- **Issue:** Poor performance on mobile devices
+- **Solution:** Adaptive quality settings
+- **Fallback:** Simplified geometry for mobile
+
+## SUCCESS METRICS
+- 3D sphere renders correctly in all target browsers
+- Smooth 60fps animation on desktop
+- Professional embossed/debossed appearance
+- Responsive interaction and hover effects
+- Seamless integration with existing design
+
+## IMMEDIATE NEXT ACTIONS
+1. Install Three.js dependencies
+2. Create basic 3D scene setup
+3. Implement icosahedron geometry
+4. Test basic rendering
+
+---
+**Created:** $(date)
+**Status:** Planning Complete - Ready for Implementation
+</file>
+
+<file path="src/lib/components/GeodesicSphere3D.svelte">
+<script lang="ts">
+	import { onMount, onDestroy } from 'svelte';
+	import * as THREE from 'three';
+
+	let container: HTMLDivElement;
+	let scene: THREE.Scene;
+	let camera: THREE.PerspectiveCamera;
+	let renderer: THREE.WebGLRenderer;
+	let sphere: THREE.Group;
+	let animationId: number;
+	let mouseX = 0;
+	let mouseY = 0;
+	let targetRotationX = 0;
+	let targetRotationY = 0;
+
+	// Geodesic sphere parameters
+	const sphereRadius = 120;
+	const subdivisionFrequency = 2;
+
+	onMount(() => {
+		initScene();
+		createGeodesicSphere();
+		animate();
+
+		// Handle window resize
+		const handleResize = () => {
+			if (camera && renderer && container) {
+				const width = container.clientWidth;
+				const height = container.clientHeight;
+				
+				camera.aspect = width / height;
+				camera.updateProjectionMatrix();
+				renderer.setSize(width, height);
+			}
+		};
+
+		window.addEventListener('resize', handleResize);
+		handleResize();
+
+		// Add mouse interaction
+		const handleMouseMove = (event: MouseEvent) => {
+			mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+			mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+		};
+
+		window.addEventListener('mousemove', handleMouseMove);
+
+		return () => {
+			window.removeEventListener('resize', handleResize);
+			window.removeEventListener('mousemove', handleMouseMove);
+		};
+	});
+
+	onDestroy(() => {
+		if (animationId) {
+			cancelAnimationFrame(animationId);
+		}
+		if (renderer) {
+			renderer.dispose();
+		}
+	});
+
+	function initScene() {
+		// Create scene
+		scene = new THREE.Scene();
+		scene.background = new THREE.Color(0xffffff);
+
+		// Create camera
+		camera = new THREE.PerspectiveCamera(
+			75,
+			container.clientWidth / container.clientHeight,
+			0.1,
+			1000
+		);
+		camera.position.z = 250;
+
+		// Create renderer
+		renderer = new THREE.WebGLRenderer({ 
+			antialias: true,
+			alpha: true 
+		});
+		renderer.setSize(container.clientWidth, container.clientHeight);
+		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+		container.appendChild(renderer.domElement);
+
+		// Add lighting for embossed effect
+		const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+		scene.add(ambientLight);
+
+		// Main directional light
+		const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+		directionalLight.position.set(50, 50, 50);
+		scene.add(directionalLight);
+
+		// Fill light for better depth perception
+		const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+		fillLight.position.set(-30, -30, -30);
+		scene.add(fillLight);
+
+		// Rim light for edge definition
+		const rimLight = new THREE.DirectionalLight(0xffffff, 0.2);
+		rimLight.position.set(0, 0, 100);
+		scene.add(rimLight);
+	}
+
+	function createGeodesicSphere() {
+		sphere = new THREE.Group();
+
+		// Create base icosahedron
+		const icosahedronGeometry = new THREE.IcosahedronGeometry(sphereRadius, subdivisionFrequency);
+		
+		// Create embossed wireframe material
+		const wireframeMaterial = new THREE.MeshPhongMaterial({
+			color: 0x1f2937,
+			wireframe: true,
+			transparent: true,
+			opacity: 0.8,
+			shininess: 100,
+			emissive: 0x1f2937,
+			emissiveIntensity: 0.1
+		});
+
+		// Create wireframe mesh with slight offset for embossed effect
+		const wireframeMesh = new THREE.Mesh(icosahedronGeometry, wireframeMaterial);
+		wireframeMesh.position.z = 0.5; // Slight offset for depth
+		sphere.add(wireframeMesh);
+
+		// Create vertex nodes with embossed effect
+		const vertices = icosahedronGeometry.attributes.position;
+		const nodeGeometry = new THREE.SphereGeometry(2.2, 12, 12);
+		const nodeMaterial = new THREE.MeshPhongMaterial({
+			color: 0x6b7280,
+			transparent: true,
+			opacity: 0.9,
+			shininess: 80,
+			emissive: 0x6b7280,
+			emissiveIntensity: 0.05
+		});
+
+		for (let i = 0; i < vertices.count; i += 3) {
+			const x = vertices.getX(i);
+			const y = vertices.getY(i);
+			const z = vertices.getZ(i);
+			
+			// Normalize to sphere surface
+			const length = Math.sqrt(x * x + y * y + z * z);
+			const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
+			node.position.set(
+				(x / length) * sphereRadius,
+				(y / length) * sphereRadius,
+				(z / length) * sphereRadius
+			);
+			
+			// Add subtle animation offset
+			node.userData = { originalY: node.position.y };
+			sphere.add(node);
+		}
+
+		// Add central connection point
+		const centralNodeGeometry = new THREE.SphereGeometry(3.2, 16, 16);
+		const centralNodeMaterial = new THREE.MeshPhongMaterial({
+			color: 0x1f2937,
+			transparent: true,
+			opacity: 0.95,
+			shininess: 120,
+			emissive: 0x1f2937,
+			emissiveIntensity: 0.1
+		});
+		const centralNode = new THREE.Mesh(centralNodeGeometry, centralNodeMaterial);
+		sphere.add(centralNode);
+
+		scene.add(sphere);
+	}
+
+	function animate() {
+		animationId = requestAnimationFrame(animate);
+
+		// Rotate sphere with mouse interaction
+		if (sphere) {
+			// Smooth mouse interaction
+			targetRotationX = mouseY * 0.5;
+			targetRotationY = mouseX * 0.5;
+			
+			sphere.rotation.x += (targetRotationX - sphere.rotation.x) * 0.05;
+			sphere.rotation.y += (targetRotationY - sphere.rotation.y) * 0.05;
+			
+			// Add subtle continuous rotation
+			sphere.rotation.x += 0.002;
+			sphere.rotation.y += 0.003;
+			
+			// Animate nodes with pulsing effect
+			sphere.children.forEach((child, index) => {
+				if (child.type === 'Mesh' && child.userData.originalY !== undefined) {
+					const time = Date.now() * 0.001;
+					const pulseOffset = Math.sin(time * 2 + index * 0.5) * 0.5;
+					child.position.y = child.userData.originalY + pulseOffset;
+					
+					// Subtle scale animation
+					const scale = 1 + Math.sin(time * 3 + index * 0.3) * 0.1;
+					child.scale.setScalar(scale);
+				}
+			});
+		}
+
+		renderer.render(scene, camera);
+	}
+</script>
+
+<div class="relative w-full h-full" bind:this={container}>
+	<!-- Three.js canvas will be inserted here -->
+</div>
+
+<style>
+	div :global(canvas) {
+		display: block;
+		width: 100% !important;
+		height: 100% !important;
+	}
+</style>
+</file>
+
+<file path="DOCUMENTATION/ACTION_PLANS/PLAN_SvelteKit_Setup.md">
+# SvelteKit Basic Setup - Execution Plan
+
+## PROJECT OVERVIEW
+Transform empty workspace into production-ready SvelteKit application with modern tooling and best practices.
+
+## MILESTONE 1: Core Framework Setup
+**Objective:** Initialize SvelteKit project with essential dependencies
+
+### Tasks:
+- [x] Initialize package.json with SvelteKit dependencies
+- [x] Configure svelte.config.js with adapter-auto
+- [x] Set up vite.config.js for build optimization
+- [x] Configure TypeScript with proper tsconfig.json
+- [x] Install development dependencies (ESLint, Prettier)
+
+**Test Criteria:** `npm run dev` starts development server successfully
+
+## MILESTONE 2: Project Structure & Routing
+**Objective:** Create proper file structure following SvelteKit conventions
+
+### Tasks:
+- [x] Create src/app.html template
+- [x] Set up src/routes/+layout.svelte for global layout
+- [x] Create src/routes/+page.svelte as homepage
+- [x] Establish src/lib/ directory structure for components and utilities
+- [x] Create static/ directory for assets
+
+**Test Criteria:** Application loads with proper layout and homepage
+
+## MILESTONE 3: TypeScript Integration
+**Objective:** Ensure full TypeScript support across the application
+
+### Tasks:
+- [x] Configure TypeScript in all Svelte components
+- [x] Set up proper type definitions in src/lib/types/
+- [x] Create typed utility functions in src/lib/utils/
+- [x] Configure path aliases for clean imports
+
+**Test Criteria:** TypeScript compilation passes without errors
+
+## MILESTONE 4: Development Tooling
+**Objective:** Set up development workflow and code quality tools
+
+### Tasks:
+- [x] Configure ESLint with Svelte-specific rules
+- [x] Set up Prettier for code formatting
+- [x] Create .gitignore with appropriate patterns
+- [x] Configure VS Code settings for optimal development experience
+
+**Test Criteria:** Linting and formatting work correctly
+
+## MILESTONE 5: Build & Deployment Configuration
+**Objective:** Ensure application is deployment-ready
+
+### Tasks:
+- [ ] Configure build scripts in package.json
+- [ ] Set up adapter-auto for universal deployment
+- [ ] Create basic environment variable handling
+- [ ] Test production build process
+
+**Test Criteria:** `npm run build` generates deployable output
+
+## SUCCESS METRICS
+- Development server starts without errors
+- TypeScript compilation is clean
+- All linting passes
+- Production build succeeds
+- Hot module replacement works correctly
+
+## RISK MITIGATION
+- Use stable versions of all dependencies
+- Follow official SvelteKit documentation patterns
+- Implement incremental testing at each milestone
+- Keep configuration minimal and standard
+
+## IMMEDIATE NEXT ACTIONS
+1. Initialize package.json with SvelteKit template
+2. Install all dependencies
+3. Configure basic project structure
+4. Test development server startup
+
+---
+**Created:** $(date)
+**Status:** Planning Complete - Ready for Implementation
+</file>
+
+<file path="src/lib/components/CaseStudies.svelte">
+<script lang="ts">
+	const cases = [
+		{
+			id: '01',
+			title: 'Manufacturing Workflow',
+			subtitle: 'Produktionsautomatisierung',
+			description: 'Vollständige Digitalisierung der Fertigungsprozesse mit DSGVO-konformer Datenverarbeitung und 40% Effizienzsteigerung.',
+			metrics: ['40% Effizienzsteigerung', 'DSGVO-konforme Umsetzung', '24/7 Monitoring'],
+			tags: ['Manufacturing', 'IoT', 'Compliance']
+		},
+		{
+			id: '02',
+			title: 'Financial Data Pipeline',
+			subtitle: 'Finanzprozess-Optimierung',
+			description: 'Automatisierte Datenverarbeitung mit End-to-End-Verschlüsselung und regulatorischer Compliance für Finanzdienstleister.',
+			metrics: ['99.9% Verfügbarkeit', 'End-to-End Verschlüsselung', 'BaFin-konform'],
+			tags: ['Finance', 'Security', 'Compliance']
+		},
+		{
+			id: '03',
+			title: 'Healthcare Integration',
+			subtitle: 'Medizin-Workflow',
+			description: 'Sichere Patientendaten-Workflows mit höchsten Datenschutzstandards und nahtloser Systemintegration.',
+			metrics: ['100% Datenschutz', 'HL7-kompatibel', '50% Zeitersparnis'],
+			tags: ['Healthcare', 'Integration', 'Privacy']
+		}
+	];
+</script>
+
+<section id="cases" class="relative py-32">
+	<div class="mx-auto max-w-6xl px-8">
+		<!-- Section Header -->
+		<div class="mb-24">
+			<div class="space-y-6">
+				<p class="text-xs font-mono text-gray-500 tracking-widest uppercase">Case Studies</p>
+				<h2 class="text-5xl font-extralight text-gray-900 tracking-tight max-w-2xl">
+					Vertrauen durch Transparenz
+				</h2>
+			</div>
+		</div>
+
+		<!-- Cases Grid -->
+		<div class="grid lg:grid-cols-3 gap-12">
+			{#each cases as caseStudy, index}
+				<article class="group relative">
+					<!-- Case number -->
+					<div class="text-xs font-mono text-gray-300 mb-6">
+						{caseStudy.id}
+					</div>
+
+					<!-- Card content -->
+					<div class="space-y-6">
+						<!-- Header -->
+						<div>
+							<h3 class="text-xl font-light text-gray-900 mb-2 tracking-tight">
+								{caseStudy.title}
+							</h3>
+							<p class="text-sm text-gray-600 font-light">
+								{caseStudy.subtitle}
+							</p>
+						</div>
+
+						<!-- Description -->
+						<p class="text-gray-700 leading-relaxed text-sm font-light">
+							{caseStudy.description}
+						</p>
+
+						<!-- Metrics -->
+						<div class="space-y-3 pt-4 border-t border-gray-100">
+							{#each caseStudy.metrics as metric}
+								<div class="flex items-center gap-3 text-xs text-gray-600">
+									<div class="w-1 h-1 bg-gray-400 rounded-full"></div>
+									<span class="font-light">{metric}</span>
+								</div>
+							{/each}
+						</div>
+
+						<!-- Tags -->
+						<div class="flex flex-wrap gap-2 pt-2">
+							{#each caseStudy.tags as tag}
+								<span class="px-2 py-1 text-xs text-gray-500 border border-gray-200 font-mono">
+									{tag}
+								</span>
+							{/each}
+						</div>
+					</div>
+				</article>
+			{/each}
+		</div>
+	</div>
+</section>
+</file>
+
+<file path="src/lib/components/Contact.svelte">
+<script lang="ts">
+	const contactMethods = [
+		{
+			type: 'Email',
+			value: 'hello@poly-agent.com',
+			description: 'Direkter Draht für konkrete Projekte'
+		},
+		{
+			type: 'Telefon', 
+			value: '+49 (0) 30 12345678',
+			description: 'Montag bis Freitag, 9:00 - 18:00'
+		},
+		{
+			type: 'LinkedIn',
+			value: '/company/poly-agent',
+			description: 'Berufliche Anfragen & Updates'
+		}
+	];
+</script>
+
+<section id="contact" class="relative py-32">
+	<div class="mx-auto max-w-6xl px-8">
+		<div class="grid lg:grid-cols-2 gap-20 items-start">
+			<!-- Content Column -->
+			<div class="space-y-12">
+				<div class="space-y-6">
+					<p class="text-xs font-mono text-gray-500 tracking-widest uppercase">Kontakt</p>
+					<h2 class="text-5xl font-extralight text-gray-900 tracking-tight max-w-lg">
+						Lassen Sie uns sprechen
+					</h2>
+				</div>
+
+				<div class="space-y-8">
+					<p class="text-gray-600 leading-relaxed font-light max-w-md">
+						Automatisierung beginnt mit dem richtigen Gespräch. 
+						Wir analysieren Ihre Workflows und entwickeln maßgeschneiderte Lösungen, 
+						die Datenschutz und Effizienz vereinen.
+					</p>
+
+					<div class="space-y-6">
+						{#each contactMethods as method}
+							<div class="group">
+								<div class="flex items-start gap-4">
+									<div class="flex-shrink-0 mt-1">
+										<div class="w-1 h-1 bg-gray-400 rounded-full"></div>
+									</div>
+									<div class="min-w-0 flex-1 space-y-1">
+										<span class="text-sm text-gray-500 font-light">{method.type}</span>
+										<a 
+											href={method.type === 'Email' ? `mailto:${method.value}` : 
+											      method.type === 'Telefon' ? `tel:${method.value}` : 
+											      `https://linkedin.com${method.value}`}
+											class="text-gray-900 hover:text-gray-700 transition-colors font-mono text-sm block"
+										>
+											{method.value}
+										</a>
+										<p class="text-gray-500 text-xs font-light">
+											{method.description}
+										</p>
+									</div>
+								</div>
+							</div>
+						{/each}
+					</div>
+				</div>
+
+				<!-- Privacy Note -->
+				<div class="pt-8 border-t border-gray-100">
+					<p class="text-gray-500 text-xs leading-relaxed font-light">
+						<strong class="text-gray-700">Datenschutz-Hinweis:</strong> 
+						Ihre Anfrage wird verschlüsselt übertragen und DSGVO-konform verarbeitet. 
+						Keine Weiterleitung an Dritte, keine Marketing-Automation.
+					</p>
+				</div>
+			</div>
+
+			<!-- Visual Column -->
+			<div class="relative">
+				<!-- Connection visualization -->
+				<div class="relative w-full h-80 flex items-center justify-center">
+					<svg viewBox="0 0 300 300" class="w-full h-full opacity-30">
+						<!-- Central node -->
+						<circle 
+							cx="150" 
+							cy="150" 
+							r="2" 
+							fill="#6b7280"
+							class="animate-pulse"
+						/>
+
+						<!-- Connection nodes -->
+						{#each Array(6) as _, i}
+							<g>
+								<line 
+									x1="150" 
+									y1="150"
+									x2={150 + 60 * Math.cos(i * Math.PI / 3)}
+									y2={150 + 60 * Math.sin(i * Math.PI / 3)}
+									stroke="#9ca3af"
+									stroke-width="0.5"
+									opacity="0.7"
+								/>
+								<circle 
+									cx={150 + 60 * Math.cos(i * Math.PI / 3)}
+									cy={150 + 60 * Math.sin(i * Math.PI / 3)}
+									r="1" 
+									fill="#9ca3af"
+									class="animate-pulse"
+									style="animation-delay: {i * 300}ms"
+								/>
+							</g>
+						{/each}
+
+						<!-- Outer ring -->
+						{#each Array(12) as _, i}
+							<circle 
+								cx={150 + 100 * Math.cos(i * Math.PI / 6)}
+								cy={150 + 100 * Math.sin(i * Math.PI / 6)}
+								r="0.5" 
+								fill="#d1d5db"
+								class="animate-pulse"
+								style="animation-delay: {i * 150}ms"
+							/>
+						{/each}
+					</svg>
+				</div>
+
+				<!-- Floating elements -->
+				<div class="absolute top-8 right-4 text-gray-300 font-mono text-xs">
+					DSGVO-konform
+				</div>
+				<div class="absolute bottom-12 left-8 text-gray-300 font-mono text-xs">
+					End-to-End verschlüsselt
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</file>
+
+<file path="src/lib/components/Hero.svelte">
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import GeodesicSphere3D from './GeodesicSphere3D.svelte';
+	
+	let mounted = false;
+	
+	onMount(() => {
+		mounted = true;
+	});
+</script>
+
+<section class="relative min-h-[90vh] flex items-center justify-center">
+	<div class="mx-auto max-w-6xl px-8 grid lg:grid-cols-2 gap-20 items-center">
+		<!-- Content Column -->
+		<div class="space-y-12">
+			<div class="space-y-8">
+				<h1 class="text-6xl lg:text-8xl font-extralight tracking-tight leading-[0.9]">
+					<span class="block text-gray-900">Automation</span>
+					<span class="block text-gray-500 text-5xl lg:text-6xl">mit</span>
+					<span class="block text-gray-900">Datenschutz-DNA</span>
+				</h1>
+				
+				<p class="text-lg text-gray-600 max-w-md leading-relaxed font-light">
+					Intelligente Workflow-Optimierung für Unternehmen, 
+					die Effizienz und Compliance gleichzeitig ernst nehmen.
+				</p>
+			</div>
+
+			<div class="flex items-center gap-12 text-sm font-light">
+				<a 
+					href="#cases" 
+					class="group flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors duration-300"
+				>
+					<span>Mehr erfahren</span>
+					<div class="w-4 h-px bg-gray-400 group-hover:w-6 transition-all duration-200"></div>
+				</a>
+				
+				<a 
+					href="#contact" 
+					class="text-gray-500 hover:text-gray-700 transition-colors duration-300"
+				>
+					Kontakt
+				</a>
+			</div>
+		</div>
+
+		<!-- Geodesic Sphere Column -->
+		<div class="relative flex items-center justify-center">
+			<div class="relative w-96 h-96 {mounted ? 'animate-float' : ''} will-change-transform">
+				<!-- 3D Geodesic Sphere -->
+				<GeodesicSphere3D />
+				
+				<!-- Subtle shadow -->
+				<div class="absolute top-4 left-4 w-full h-full opacity-10">
+					<div class="w-full h-full bg-gray-900 rounded-full blur-2xl"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	@keyframes float {
+		0%, 100% { 
+			transform: translateY(0px) rotate(0deg); 
+		}
+		33% { 
+			transform: translateY(-12px) rotate(2deg); 
+		}
+		66% { 
+			transform: translateY(-8px) rotate(-1deg); 
+		}
+	}
+	
+	@keyframes spin-slow {
+		from { transform: rotate(0deg); }
+		to { transform: rotate(360deg); }
+	}
+	
+	@keyframes pulse-slow {
+		0%, 100% { opacity: 0.3; }
+		50% { opacity: 0.8; }
+	}
+	
+	.animate-float {
+		animation: float 8s ease-in-out infinite;
+	}
+	
+	.animate-spin-slow {
+		animation: spin-slow 60s linear infinite;
+	}
+	
+	.animate-pulse-slow {
+		animation: pulse-slow 4s ease-in-out infinite;
+	}
+</style>
+</file>
+
+<file path="src/lib/components/TechStack.svelte">
+<script lang="ts">
+	const techCategories = [
+		{
+			category: 'Automation Core',
+			technologies: [
+				{ name: 'Process Mining', description: 'Workflow-Analyse & Optimierung' },
+				{ name: 'RPA Integration', description: 'Robotic Process Automation' },
+				{ name: 'API Orchestration', description: 'Systemverbindungen & Workflows' },
+				{ name: 'Event Streaming', description: 'Real-time Datenverarbeitung' }
+			]
+		},
+		{
+			category: 'Privacy & Compliance',
+			technologies: [
+				{ name: 'DSGVO Framework', description: 'Datenschutz by Design' },
+				{ name: 'Zero-Trust Security', description: 'End-to-End Verschlüsselung' },
+				{ name: 'Audit Logging', description: 'Vollständige Nachverfolgbarkeit' },
+				{ name: 'Data Minimization', description: 'Prinzip der Datenminimierung' }
+			]
+		},
+		{
+			category: 'Infrastructure',
+			technologies: [
+				{ name: 'Kubernetes', description: 'Container Orchestration' },
+				{ name: 'Infrastructure as Code', description: 'Terraform & GitOps' },
+				{ name: 'Observability', description: 'Monitoring & Alerting' },
+				{ name: 'Edge Computing', description: 'Dezentrale Verarbeitung' }
+			]
+		}
+	];
+</script>
+
+<section id="stack" class="relative py-32">
+	<div class="mx-auto max-w-6xl px-8">
+		<!-- Section Header -->
+		<div class="mb-24">
+			<div class="space-y-6">
+				<p class="text-xs font-mono text-gray-500 tracking-widest uppercase">Technology Stack</p>
+				<h2 class="text-5xl font-extralight text-gray-900 tracking-tight max-w-2xl">
+					Engineering mit Prinzipien
+				</h2>
+			</div>
+		</div>
+
+		<!-- Tech Grid -->
+		<div class="grid lg:grid-cols-3 gap-16">
+			{#each techCategories as category, categoryIndex}
+				<div class="space-y-8">
+					<!-- Category Header -->
+					<div class="pb-6 border-b border-gray-100">
+						<h3 class="text-lg font-light text-gray-900 mb-3 tracking-tight">
+							{category.category}
+						</h3>
+						<div class="w-8 h-px bg-gray-400"></div>
+					</div>
+
+					<!-- Technologies -->
+					<div class="space-y-8">
+						{#each category.technologies as tech, techIndex}
+							<div class="group">
+								<div class="flex items-start gap-4">
+									<!-- Node indicator -->
+									<div class="mt-2 flex-shrink-0">
+										<div class="w-1 h-1 bg-gray-400 rounded-full group-hover:bg-gray-600 transition-colors duration-300"></div>
+									</div>
+
+									<!-- Content -->
+									<div class="min-w-0 flex-1">
+										<h4 class="text-gray-900 font-light text-sm mb-2 group-hover:text-gray-700 transition-colors">
+											{tech.name}
+										</h4>
+										<p class="text-gray-600 text-xs leading-relaxed font-light">
+											{tech.description}
+										</p>
+									</div>
+								</div>
+
+								<!-- Connection line to next item -->
+								{#if techIndex < category.technologies.length - 1}
+									<div class="ml-0.5 mt-4 w-px h-4 bg-gradient-to-b from-gray-200 to-transparent"></div>
+								{/if}
+							</div>
+						{/each}
+					</div>
+				</div>
+			{/each}
+		</div>
+
+		<!-- Bottom CTA -->
+		<div class="mt-32 text-center">
+			<div class="inline-flex items-center gap-4 px-8 py-4 border border-gray-200 hover:border-gray-400 transition-colors">
+				<span class="text-gray-600 text-sm font-light">Technische Details & Architektur</span>
+				<div class="w-4 h-px bg-gray-400"></div>
+			</div>
+		</div>
+	</div>
+</section>
+</file>
+
+<file path="src/lib/types/index.ts">
+// Global type definitions
+export interface User {
+	id: string;
+	name: string;
+	email: string;
+}
+
+export interface ApiResponse<T> {
+	data: T;
+	success: boolean;
+	message?: string;
+}
+</file>
+
+<file path="src/lib/utils/index.ts">
+// Utility functions
+export function cn(...classes: (string | undefined | null | false)[]): string {
+	return classes.filter(Boolean).join(' ');
+}
+
+export function formatDate(date: Date): string {
+	return new Intl.DateTimeFormat('en-US', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric'
+	}).format(date);
+}
+</file>
+
+<file path="src/routes/+layout.svelte">
+<script lang="ts">
+  import '../app.css';
+</script>
+
+<!-- Global layout shell for Poly-Agent -->
+<div class="relative min-h-screen bg-white text-gray-900 antialiased overflow-x-hidden selection:bg-gray-100">
+  <!-- Paper texture background -->
+  <div
+    class="pointer-events-none absolute inset-0 opacity-30"
+    style="
+      background-image:
+        radial-gradient(rgba(0,0,0,0.015) 1px, transparent 1px),
+        linear-gradient(45deg, rgba(0,0,0,0.005) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(0,0,0,0.005) 25%, transparent 25%);
+      background-size: 20px 20px, 40px 40px, 40px 40px;
+      background-position: 0 0, 0 0, 20px 20px;
+    "
+  ></div>
+
+  <!-- Minimal Top Navigation -->
+  <header class="relative z-20">
+    <div class="mx-auto max-w-6xl px-8 py-8">
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-4">
+          <div class="w-8 h-8 border border-gray-900 flex items-center justify-center text-xs font-mono">
+            P
+          </div>
+          <span class="text-lg font-light tracking-wide">Poly-Agent</span>
+        </a>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex items-center gap-12 text-sm font-light">
+          <a href="#cases" class="text-gray-600 hover:text-gray-900 transition-colors">Cases</a>
+          <a href="#stack" class="text-gray-600 hover:text-gray-900 transition-colors">Stack</a>
+          <a href="#contact" class="text-gray-600 hover:text-gray-900 transition-colors">Kontakt</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page content -->
+  <main class="relative z-10">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="relative z-10 border-t border-gray-100 mt-32">
+    <div class="mx-auto max-w-6xl px-8 py-12 text-xs text-gray-400 font-light">
+      © {new Date().getFullYear()} Poly-Agent — Automation & Workflow Optimization
+    </div>
+  </footer>
+</div>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: .18 }
+    50% { opacity: .4 }
+  }
+</style>
+</file>
+
+<file path="src/routes/+page.svelte">
+<script lang="ts">
+	import Hero from '$components/Hero.svelte';
+	import CaseStudies from '$components/CaseStudies.svelte';
+	import TechStack from '$components/TechStack.svelte';
+	import Contact from '$components/Contact.svelte';
+</script>
+
+<svelte:head>
+	<title>Poly-Agent — Automation mit Datenschutz-DNA</title>
+	<meta name="description" content="Intelligente Workflow-Optimierung für Unternehmen, die Effizienz und Compliance gleichzeitig ernst nehmen." />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</svelte:head>
+
+<!-- Hero Section -->
+<Hero />
+
+<!-- Divider -->
+<div class="relative py-16">
+	<div class="absolute inset-0 flex items-center">
+		<div class="w-full border-t border-gray-100"></div>
+	</div>
+	<div class="relative flex justify-center">
+		<div class="bg-white px-4">
+			<div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+		</div>
+	</div>
+</div>
+
+<!-- Case Studies Section -->
+<CaseStudies />
+
+<!-- Divider -->
+<div class="relative py-16">
+	<div class="absolute inset-0 flex items-center">
+		<div class="w-full border-t border-gray-100"></div>
+	</div>
+	<div class="relative flex justify-center">
+		<div class="bg-white px-4">
+			<div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+		</div>
+	</div>
+</div>
+
+<!-- Tech Stack Section -->
+<TechStack />
+
+<!-- Divider -->
+<div class="relative py-16">
+	<div class="absolute inset-0 flex items-center">
+		<div class="w-full border-t border-gray-100"></div>
+	</div>
+	<div class="relative flex justify-center">
+		<div class="bg-white px-4">
+			<div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+		</div>
+	</div>
+</div>
+
+<!-- Contact Section -->
+<Contact />
+</file>
+
+<file path="src/app.css">
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		font-family: 'Inter', 'Space Grotesk', system-ui, sans-serif;
+		scroll-behavior: smooth;
+	}
+	
+	body {
+		font-family: 'Inter', 'Space Grotesk', system-ui, sans-serif;
+		line-height: 1.5;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+@layer utilities {
+	.bg-gradient-radial {
+		background: radial-gradient(var(--tw-gradient-stops));
+	}
+	
+	.text-shadow-sm {
+		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	}
+	
+	.will-change-transform {
+		will-change: transform;
+	}
+}
+</file>
+
+<file path="src/app.html">
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover" class="bg-gray-50">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
+</file>
+
+<file path=".eslintrc.cjs">
+module.exports = {
+	root: true,
+	extends: [
+		'eslint:recommended',
+		'@typescript-eslint/recommended',
+		'plugin:svelte/recommended',
+		'prettier'
+	],
+	parser: '@typescript-eslint/parser',
+	plugins: ['@typescript-eslint'],
+	parserOptions: {
+		sourceType: 'module',
+		ecmaVersion: 2020,
+		extraFileExtensions: ['.svelte']
+	},
+	env: {
+		browser: true,
+		es2017: true,
+		node: true
+	},
+	overrides: [
+		{
+			files: ['*.svelte'],
+			parser: 'svelte-eslint-parser',
+			parserOptions: {
+				parser: '@typescript-eslint/parser'
+			}
+		}
+	]
+};
+</file>
+
+<file path=".gitignore">
+.DS_Store
+node_modules
+/build
+/.svelte-kit
+/package
+.env
+.env.*
+!.env.example
+.vercel
+.output
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+</file>
+
+<file path=".prettierrc">
+{
+	"useTabs": true,
+	"singleQuote": true,
+	"trailingComma": "none",
+	"printWidth": 100,
+	"plugins": ["prettier-plugin-svelte"],
+	"overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }]
+}
+</file>
+
+<file path="package.json">
+{
+  "name": "polyagent",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite dev",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "prettier --check . && eslint .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^3.0.0",
+    "@sveltejs/kit": "^2.0.0",
+    "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-svelte": "^2.35.1",
+    "postcss": "^8.4.32",
+    "prettier": "^3.1.1",
+    "prettier-plugin-svelte": "^3.1.2",
+    "svelte": "^4.2.7",
+    "svelte-check": "^3.6.0",
+    "tailwindcss": "^3.3.6",
+    "tslib": "^2.4.1",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.3"
+  },
+  "type": "module",
+  "dependencies": {
+    "@types/three": "^0.179.0",
+    "three": "^0.179.1"
+  }
+}
+</file>
+
+<file path="postcss.config.js">
+export default {
+	plugins: {
+		tailwindcss: {},
+		autoprefixer: {}
+	}
+};
+</file>
+
+<file path="svelte.config.js">
+import adapter from '@sveltejs/adapter-auto';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
+	// for more information about preprocessors
+	preprocess: vitePreprocess(),
+
+	kit: {
+		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
+		// If your environment is not supported or you settled on a specific environment, switch out the adapter.
+		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
+		adapter: adapter(),
+		alias: {
+			'$lib': './src/lib',
+			'$components': './src/lib/components',
+			'$utils': './src/lib/utils',
+			'$types': './src/lib/types'
+		}
+	}
+};
+
+export default config;
+</file>
+
+<file path="tailwind.config.js">
+/** @type {import('tailwindcss').Config} */
+export default {
+	content: ['./src/**/*.{html,js,svelte,ts}'],
+	theme: {
+		extend: {
+			fontFamily: {
+				sans: ['Inter', 'Space Grotesk', 'system-ui', 'sans-serif'],
+				mono: ['JetBrains Mono', 'Monaco', 'Consolas', 'monospace']
+			},
+			colors: {
+				primary: {
+					50: '#eff6ff',
+					500: '#2563eb',
+					600: '#1d4ed8',
+					700: '#1e40af'
+				},
+				gray: {
+					50: '#f8fafc',
+					900: '#0f172a'
+				}
+			},
+			animation: {
+				'float': 'float 8s ease-in-out infinite',
+				'spin-slow': 'spin 60s linear infinite',
+				'pulse-slow': 'pulse 4s ease-in-out infinite'
+			},
+			keyframes: {
+				float: {
+					'0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+					'33%': { transform: 'translateY(-12px) rotate(2deg)' },
+					'66%': { transform: 'translateY(-8px) rotate(-1deg)' }
+				}
+			}
+		}
+	},
+	plugins: []
+};
+</file>
+
+<file path="tsconfig.json">
+{
+	"extends": "./.svelte-kit/tsconfig.json",
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true,
+		"moduleResolution": "bundler"
+	}
+}
+</file>
+
+<file path="vite.config.js">
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+	plugins: [sveltekit()],
+	test: {
+		include: ['src/**/*.{test,spec}.{js,ts}']
+	}
+});
+</file>
+
+</files>
