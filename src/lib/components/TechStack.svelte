@@ -4,20 +4,20 @@
 	$: techCategories = $currentLanguage === 'de' ? translations.de.tech.categories : translations.en.tech.categories;
 </script>
 
-<section id="stack" class="relative py-32">
-	<div class="mx-auto max-w-6xl px-8">
+<section id="stack" class="relative py-16 sm:py-24 lg:py-32">
+	<div class="mx-auto max-w-6xl px-4 sm:px-8">
 		<!-- Section Header -->
-		<div class="mb-24">
-			<div class="space-y-6">
+		<div class="mb-12 sm:mb-24">
+			<div class="space-y-4 sm:space-y-6">
 				<p class="text-xs font-mono text-gray-500 tracking-widest uppercase">{$currentLanguage === 'de' ? translations.de.tech.title : translations.en.tech.title}</p>
-				<h2 class="text-5xl font-extralight text-gray-900 tracking-tight max-w-2xl">
+				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-extralight text-gray-900 tracking-tight max-w-2xl">
 					{$currentLanguage === 'de' ? translations.de.tech.subtitle : translations.en.tech.subtitle}
 				</h2>
 			</div>
 		</div>
 
 		<!-- Tech Grid -->
-		<div class="grid lg:grid-cols-3 gap-16">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-16">
 			{#each techCategories as category, categoryIndex}
 				<div class="space-y-8">
 					<!-- Category Header -->
@@ -61,7 +61,7 @@
 		</div>
 
 		<!-- Bottom CTA -->
-		<div class="mt-32 text-center">
+		<div class="mt-16 sm:mt-32 text-center">
 			<div class="inline-flex items-center gap-4 px-8 py-4 border border-gray-200 hover:border-gray-400 transition-colors">
 				<span class="text-gray-600 text-sm font-light">{$currentLanguage === 'de' ? translations.de.tech.cta : translations.en.tech.cta}</span>
 				<div class="w-4 h-px bg-gray-400"></div>

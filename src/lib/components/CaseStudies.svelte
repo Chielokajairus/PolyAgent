@@ -19,20 +19,20 @@
 	$: cases = $currentLanguage === 'de' ? translations.de.cases.items : translations.en.cases.items;
 </script>
 
-<section id="cases" class="relative py-32">
-	<div class="mx-auto max-w-6xl px-8">
+<section id="cases" class="relative py-16 sm:py-24 lg:py-32">
+			<div class="mx-auto max-w-6xl px-4 sm:px-8">
 		<!-- Section Header -->
-		<div class="mb-24">
-			<div class="space-y-6">
+		<div class="mb-12 sm:mb-24">
+			<div class="space-y-4 sm:space-y-6">
 				<p class="text-xs font-mono text-gray-500 tracking-widest uppercase">{$currentLanguage === 'de' ? translations.de.cases.title : translations.en.cases.title}</p>
-				<h2 class="text-5xl font-extralight text-gray-900 tracking-tight max-w-2xl">
+				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-extralight text-gray-900 tracking-tight max-w-2xl">
 					{$currentLanguage === 'de' ? translations.de.cases.subtitle : translations.en.cases.subtitle}
 				</h2>
 			</div>
 		</div>
 
 		<!-- Cases Grid -->
-		<div class="grid lg:grid-cols-3 gap-12">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
 			{#each cases as caseStudy, index}
 				<article class="group relative case-study-card">
 					<!-- Case number -->

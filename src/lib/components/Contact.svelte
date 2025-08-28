@@ -4,20 +4,20 @@
 		$: contactMethods = $currentLanguage === 'de' ? translations.de.contact.methods : translations.en.contact.methods;
 </script>
 
-<section id="contact" class="relative py-32">
-	<div class="mx-auto max-w-6xl px-8">
-		<div class="grid lg:grid-cols-2 gap-20 items-start">
+<section id="contact" class="relative py-16 sm:py-24 lg:py-32">
+	<div class="mx-auto max-w-6xl px-4 sm:px-8">
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 			<!-- Content Column -->
-			<div class="space-y-12">
-				<div class="space-y-6">
+			<div class="space-y-8 sm:space-y-12">
+				<div class="space-y-4 sm:space-y-6">
 					<p class="text-xs font-mono text-gray-500 tracking-widest uppercase">{$currentLanguage === 'de' ? translations.de.contact.title : translations.en.contact.title}</p>
-					<h2 class="text-5xl font-extralight text-gray-900 tracking-tight max-w-lg">
+					<h2 class="text-3xl sm:text-4xl lg:text-5xl font-extralight text-gray-900 tracking-tight max-w-lg">
 						{$currentLanguage === 'de' ? translations.de.contact.subtitle : translations.en.contact.subtitle}
 					</h2>
 				</div>
 
-				<div class="space-y-8">
-					<p class="text-gray-600 leading-relaxed font-light max-w-md">
+				<div class="space-y-6 sm:space-y-8">
+					<p class="text-gray-600 leading-relaxed font-light max-w-md text-sm sm:text-base">
 						{$currentLanguage === 'de' ? translations.de.contact.description : translations.en.contact.description}
 					</p>
 

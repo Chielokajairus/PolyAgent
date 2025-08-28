@@ -12,12 +12,15 @@
 	let mouseY = 0;
 	let targetRotationX = 0;
 	let targetRotationY = 0;
+	let handleResize: () => void;
 
 	// Geodesic sphere parameters
 	const sphereRadius = 160;
 	const subdivisionFrequency = 2;
 
 	onMount(() => {
+		if (typeof window === 'undefined') return;
+		
 		initScene();
 		createGeodesicSphere();
 		animate();
@@ -55,6 +58,10 @@
 		if (animationId) {
 			cancelAnimationFrame(animationId);
 		}
+		// Cleanup resize listener
+		if (typeof window !== 'undefined' && handleResize) {
+			window.removeEventListener('resize', handleResize);
+		}
 		if (renderer) {
 			renderer.dispose();
 		}
@@ -82,6 +89,14 @@
 		renderer.setSize(container.clientWidth, container.clientHeight);
 		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 		container.appendChild(renderer.domElement);
+		
+		// Handle resize function (will be set up in onMount)
+		handleResize = () => {
+			const aspectRatio = container.clientWidth / container.clientHeight;
+			camera.aspect = aspectRatio;
+			camera.updateProjectionMatrix();
+			renderer.setSize(container.clientWidth, container.clientHeight);
+		};
 
 		// Add lighting for embossed effect
 		const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);

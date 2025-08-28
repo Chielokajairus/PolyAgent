@@ -17,23 +17,23 @@
 	});
 </script>
 
-<section class="relative min-h-[90vh] flex items-center justify-center">
-	<div class="mx-auto max-w-6xl px-8 grid lg:grid-cols-2 gap-20 items-center">
+<section class="relative min-h-[80vh] sm:min-h-[90vh] flex items-center justify-center">
+	<div class="mx-auto max-w-6xl px-4 sm:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
 		<!-- Content Column -->
-		<div class="space-y-12">
-			<div class="space-y-8">
-				<h1 class="text-6xl lg:text-8xl font-extralight tracking-tight leading-[0.9]">
+		<div class="space-y-8 sm:space-y-12 order-2 lg:order-1">
+			<div class="space-y-6 sm:space-y-8">
+				<h1 class="text-4xl sm:text-6xl lg:text-8xl font-extralight tracking-tight leading-[0.9]">
 					<span class="block text-gray-900 hero-title">{$currentLanguage === 'de' ? translations.de.hero.title.line1 : translations.en.hero.title.line1}</span>
-					<span class="block text-gray-500 text-5xl lg:text-6xl hero-subtitle">{$currentLanguage === 'de' ? translations.de.hero.title.line2 : translations.en.hero.title.line2}</span>
+					<span class="block text-gray-500 text-3xl sm:text-5xl lg:text-6xl hero-subtitle">{$currentLanguage === 'de' ? translations.de.hero.title.line2 : translations.en.hero.title.line2}</span>
 					<span class="block text-gray-900 hero-title">{$currentLanguage === 'de' ? translations.de.hero.title.line3 : translations.en.hero.title.line3}</span>
 				</h1>
 				
-				<p class="text-lg text-gray-600 max-w-md leading-relaxed font-light hero-description">
+				<p class="text-base sm:text-lg text-gray-600 max-w-md leading-relaxed font-light hero-description">
 					{$currentLanguage === 'de' ? translations.de.hero.description : translations.en.hero.description}
 				</p>
 			</div>
 
-			<div class="flex items-center gap-12 text-sm font-light">
+			<div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12 text-sm font-light">
 				<a 
 					href="#cases" 
 					class="group flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors duration-300 hero-cta"
@@ -52,8 +52,8 @@
 		</div>
 
 		<!-- Geodesic Sphere Column -->
-		<div class="relative flex items-center justify-center">
-			<div class="relative w-[28rem] h-[28rem] {mounted ? 'animate-float' : ''} will-change-transform">
+		<div class="relative flex items-center justify-center order-1 lg:order-2">
+			<div class="relative w-[20rem] h-[20rem] sm:w-[24rem] sm:h-[24rem] lg:w-[28rem] lg:h-[28rem] {mounted ? 'animate-float' : ''} will-change-transform">
 				<!-- 3D Geodesic Sphere -->
 				<GeodesicSphere3D />
 				
