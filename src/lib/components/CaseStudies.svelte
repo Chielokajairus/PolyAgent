@@ -1,30 +1,46 @@
 <script lang="ts">
-	const cases = [
-		{
-			id: '01',
-			title: 'Manufacturing Workflow',
-			subtitle: 'Produktionsautomatisierung',
-			description: 'Vollständige Digitalisierung der Fertigungsprozesse mit DSGVO-konformer Datenverarbeitung und 40% Effizienzsteigerung.',
-			metrics: ['40% Effizienzsteigerung', 'DSGVO-konforme Umsetzung', '24/7 Monitoring'],
-			tags: ['Manufacturing', 'IoT', 'Compliance']
-		},
-		{
-			id: '02',
-			title: 'Financial Data Pipeline',
-			subtitle: 'Finanzprozess-Optimierung',
-			description: 'Automatisierte Datenverarbeitung mit End-to-End-Verschlüsselung und regulatorischer Compliance für Finanzdienstleister.',
-			metrics: ['99.9% Verfügbarkeit', 'End-to-End Verschlüsselung', 'BaFin-konform'],
-			tags: ['Finance', 'Security', 'Compliance']
-		},
-		{
-			id: '03',
-			title: 'Healthcare Integration',
-			subtitle: 'Medizin-Workflow',
-			description: 'Sichere Patientendaten-Workflows mit höchsten Datenschutzstandards und nahtloser Systemintegration.',
-			metrics: ['100% Datenschutz', 'HL7-kompatibel', '50% Zeitersparnis'],
-			tags: ['Healthcare', 'Integration', 'Privacy']
-		}
-	];
+	import { onMount } from 'svelte';
+	import { scrollAnimations } from '$utils/animations';
+	
+	onMount(() => {
+		// Initialize scroll animations for case study cards
+		setTimeout(() => {
+			scrollAnimations.fadeInUp('.case-study-card', 0.1);
+			
+			// Initialize counter animations for metrics
+			scrollAnimations.counterAnimation('.metric-40', 40);
+			scrollAnimations.counterAnimation('.metric-99', 99);
+			scrollAnimations.counterAnimation('.metric-100', 100);
+			scrollAnimations.counterAnimation('.metric-50', 50);
+		}, 500);
+	});
+	
+			const cases = [
+			{
+				id: '01',
+				title: 'Manufacturing Workflow',
+				subtitle: 'Produktionsautomatisierung',
+				description: 'Vollständige Digitalisierung der Fertigungsprozesse mit DSGVO-konformer Datenverarbeitung und 40% Effizienzsteigerung.',
+				metrics: ['<span class="metric-40">40</span>% Effizienzsteigerung', 'DSGVO-konforme Umsetzung', '24/7 Monitoring'],
+				tags: ['Manufacturing', 'IoT', 'Compliance']
+			},
+			{
+				id: '02',
+				title: 'Financial Data Pipeline',
+				subtitle: 'Finanzprozess-Optimierung',
+				description: 'Automatisierte Datenverarbeitung mit End-to-End-Verschlüsselung und regulatorischer Compliance für Finanzdienstleister.',
+				metrics: ['<span class="metric-99">99.9</span>% Verfügbarkeit', 'End-to-End Verschlüsselung', 'BaFin-konform'],
+				tags: ['Finance', 'Security', 'Compliance']
+			},
+			{
+				id: '03',
+				title: 'Healthcare Integration',
+				subtitle: 'Medizin-Workflow',
+				description: 'Sichere Patientendaten-Workflows mit höchsten Datenschutzstandards und nahtloser Systemintegration.',
+				metrics: ['<span class="metric-100">100</span>% Datenschutz', 'HL7-kompatibel', '<span class="metric-50">50</span>% Zeitersparnis'],
+				tags: ['Healthcare', 'Integration', 'Privacy']
+			}
+		];
 </script>
 
 <section id="cases" class="relative py-32">
@@ -42,7 +58,7 @@
 		<!-- Cases Grid -->
 		<div class="grid lg:grid-cols-3 gap-12">
 			{#each cases as caseStudy, index}
-				<article class="group relative">
+				<article class="group relative case-study-card">
 					<!-- Case number -->
 					<div class="text-xs font-mono text-gray-300 mb-6">
 						{caseStudy.id}
@@ -70,7 +86,7 @@
 							{#each caseStudy.metrics as metric}
 								<div class="flex items-center gap-3 text-xs text-gray-600">
 									<div class="w-1 h-1 bg-gray-400 rounded-full"></div>
-									<span class="font-light">{metric}</span>
+									<span class="font-light">{@html metric}</span>
 								</div>
 							{/each}
 						</div>

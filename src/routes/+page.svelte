@@ -1,8 +1,15 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Hero from '$components/Hero.svelte';
 	import CaseStudies from '$components/CaseStudies.svelte';
 	import TechStack from '$components/TechStack.svelte';
 	import Contact from '$components/Contact.svelte';
+	import { pageTransitions } from '$utils/animations';
+	
+	onMount(() => {
+		// Fade in page content
+		pageTransitions.fadeInPage();
+	});
 </script>
 
 <svelte:head>

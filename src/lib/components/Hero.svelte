@@ -1,11 +1,18 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import GeodesicSphere3D from './GeodesicSphere3D.svelte';
+	import { heroAnimations } from '$utils/animations';
 	
 	let mounted = false;
 	
 	onMount(() => {
 		mounted = true;
+		
+		// Initialize hero animations after a short delay
+		setTimeout(() => {
+			heroAnimations.textReveal(['.hero-title', '.hero-subtitle', '.hero-description']);
+			heroAnimations.ctaReveal(['.hero-cta']);
+		}, 300);
 	});
 </script>
 
@@ -15,12 +22,12 @@
 		<div class="space-y-12">
 			<div class="space-y-8">
 				<h1 class="text-6xl lg:text-8xl font-extralight tracking-tight leading-[0.9]">
-					<span class="block text-gray-900">Automation</span>
-					<span class="block text-gray-500 text-5xl lg:text-6xl">mit</span>
-					<span class="block text-gray-900">Datenschutz-DNA</span>
+					<span class="block text-gray-900 hero-title">Automation</span>
+					<span class="block text-gray-500 text-5xl lg:text-6xl hero-subtitle">mit</span>
+					<span class="block text-gray-900 hero-title">Datenschutz-DNA</span>
 				</h1>
 				
-				<p class="text-lg text-gray-600 max-w-md leading-relaxed font-light">
+				<p class="text-lg text-gray-600 max-w-md leading-relaxed font-light hero-description">
 					Intelligente Workflow-Optimierung für Unternehmen, 
 					die Effizienz und Compliance gleichzeitig ernst nehmen.
 				</p>
@@ -29,7 +36,7 @@
 			<div class="flex items-center gap-12 text-sm font-light">
 				<a 
 					href="#cases" 
-					class="group flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors duration-300"
+					class="group flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors duration-300 hero-cta"
 				>
 					<span>Mehr erfahren</span>
 					<div class="w-4 h-px bg-gray-400 group-hover:w-6 transition-all duration-200"></div>
@@ -37,7 +44,7 @@
 				
 				<a 
 					href="#contact" 
-					class="text-gray-500 hover:text-gray-700 transition-colors duration-300"
+					class="text-gray-500 hover:text-gray-700 transition-colors duration-300 hero-cta"
 				>
 					Kontakt
 				</a>

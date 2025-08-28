@@ -1,5 +1,20 @@
 <script lang="ts">
   import '../app.css';
+  import { onMount } from 'svelte';
+  import { microInteractions } from '$utils/animations';
+  
+  onMount(() => {
+    // Add navigation hover effects
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        microInteractions.navHover(`#${link.id || 'nav-link'}`);
+      });
+      link.addEventListener('mouseleave', () => {
+        microInteractions.navHoverOut(`#${link.id || 'nav-link'}`);
+      });
+    });
+  });
 </script>
 
 <!-- Global layout shell for Poly-Agent -->
@@ -31,9 +46,9 @@
         
         <!-- Navigation -->
         <nav class="hidden md:flex items-center gap-12 text-sm font-light">
-          <a href="#cases" class="text-gray-600 hover:text-gray-900 transition-colors">Cases</a>
-          <a href="#stack" class="text-gray-600 hover:text-gray-900 transition-colors">Stack</a>
-          <a href="#contact" class="text-gray-600 hover:text-gray-900 transition-colors">Kontakt</a>
+          <a href="#cases" id="nav-cases" class="text-gray-600 hover:text-gray-900 transition-colors">Cases</a>
+          <a href="#stack" id="nav-stack" class="text-gray-600 hover:text-gray-900 transition-colors">Stack</a>
+          <a href="#contact" id="nav-contact" class="text-gray-600 hover:text-gray-900 transition-colors">Kontakt</a>
         </nav>
       </div>
     </div>
